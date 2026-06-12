@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A K Shah Consultancy | Accounting & Taxation Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0a0e14;
+            --bg-card: #121820;
+            --bg-hover: #1a222c;
+            --accent-primary: #3b82f6; /* Trust Blue */
+            --accent-secondary: #60a5fa;
+            --text-main: #9ca3af;
+            --text-heading: #f9fafb;
+            --whatsapp: #25D366;
+            --border-color: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo-title {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-heading);
+        }
+
+        /* STRONGER ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(80px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.15); 
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: #05070a;
+            padding: 0.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #6b7280;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .top-bar-info span {
+            margin-right: 1.5rem;
+        }
+
+        .top-bar-info i {
+            color: var(--accent-primary);
+            margin-right: 0.4rem;
+        }
+
+        /* Navbar & Branding */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(10, 14, 20, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .brand-container {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .logo-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-title span {
+            color: var(--accent-primary);
+        }
+
+        .logo-subtext {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-heading);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent-primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-heading);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-primary);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-primary);
+        }
+
+        .btn-whatsapp {
+            background-color: transparent;
+            border-color: var(--whatsapp);
+            color: var(--whatsapp);
+            padding: 0.7rem 1rem;
+            font-size: 0.85rem;
+            width: 100%;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp);
+            color: #000;
+        }
+
+        /* Section Formatting */
+        section {
+            padding: 7rem 2%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .section-subtitle {
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h2.section-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        /* Service Categories */
+        .service-category-title {
+            font-size: 2.2rem;
+            color: var(--text-heading);
+            margin: 4rem 0 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .service-category-title i {
+            color: var(--accent-primary);
+            font-size: 1.8rem;
+        }
+
+        .service-category-title span {
+            color: var(--accent-primary);
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        /* About Section */
+        #about { padding-left: 5%; padding-right: 5%; }
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            height: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px solid var(--accent-primary);
+            z-index: 0;
+            border-radius: 8px;
+        }
+
+        .about-features {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature-item i {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.8rem;
+            border-radius: 50%;
+        }
+
+        .feature-item h4 {
+            font-size: 1.1rem;
+        }
+
+        /* Services Grid (Strictly 4 in a row) */
+        .services-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 Columns */
+            gap: 1.2rem; /* Tighter gap to ensure they fit nicely */
+        }
+
+        /* Special centering for the Accounting section */
+        .accounting-grid {
+            display: flex;
+            justify-content: center;
+        }
+
+        .accounting-grid .service-card {
+            max-width: 330px;
+            width: 100%;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            padding: 2rem 1.2rem; /* Optimal padding for 4 items in a row */
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background-color: var(--accent-primary);
+            transition: height 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background-color: var(--bg-hover);
+            border-color: #2d3748;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.2rem;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--accent-primary);
+            color: #fff;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem; /* Perfect font size for 4-columns */
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .service-card p {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .service-card ul li {
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .service-card ul li i {
+            color: var(--accent-primary);
+            font-size: 0.75rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Contact Section Grid */
+        #contact {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: stretch;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .contact-card {
+            background: var(--bg-dark);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            height: 100%;
+        }
+
+        .contact-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details {
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            color: var(--text-heading);
+            font-weight: 500;
+        }
+
+        .contact-item i {
+            color: var(--accent-primary);
+            font-size: 1.3rem;
+            width: 20px;
+        }
+
+        .phone-primary {
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .map-container {
+            background: var(--bg-dark);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 5%;
+            background-color: #05070a;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1100px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr); /* Only switches to 2 rows on smaller screens/tablets */
+            }
+            .accounting-grid .service-card { max-width: none; }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 3.5rem; }
+            h2.section-title { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 4rem 5%; }
+            .top-bar { display: none; }
+            .menu-toggle { display: block; }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #0a0e14;
+                padding: 1rem 0;
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; text-align: center; }
+            .nav-links a { display: block; padding: 1rem 0; }
+
+            #home {
+                min-height: 70vh;
+                padding-top: 6rem;
+                text-align: center;
+            }
+            .hero-content { margin: 0 auto; }
+            .hero-content h1 { font-size: 2.5rem; line-height: 1.2; }
+            .hero-content h2 { font-size: 1.2rem; margin-bottom: 1.5rem; }
+            
+            .about-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-text { text-align: center; }
+            .about-features {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                text-align: left;
+                max-width: 300px;
+                margin: 2rem auto 0;
+            }
+            .about-image { height: 300px; }
+            
+            .service-category-title {
+                font-size: 1.8rem;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr; /* Switches to 1 card per row on mobile phones */
+            }
+
+            .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .contact-card { padding: 2rem 1.5rem; align-items: center; text-align: center; }
+            .contact-item { justify-content: center; font-size: 1rem; }
+            .map-container { min-height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-info">
+            <span><i class="fas fa-map-marker-alt"></i> Serving Individuals, Firms, & Companies</span>
+            <span><i class="fas fa-clock"></i> Mon - Sat: 10:00 AM - 7:00 PM</span>
+        </div>
+        <div class="top-bar-social">
+            <span style="color: var(--text-heading); font-weight: 600;">Professional Accounting & Taxation</span>
+        </div>
+    </div>
+
+    <header id="header">
+        <nav>
+            <a href="#home" class="brand-container">
+                <div class="logo-title">A K Shah<span> Consultancy</span></div>
+                <div class="logo-subtext">AKSHAY SHAH</div>
+            </a>
+          
+            <i class="fas fa-bars menu-toggle" id="mobile-menu"></i>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About </a></li>
+                <li><a href="#services">Services </a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero-content reveal">
+            <span class="section-subtitle">Financial Excellence</span>
+            <h1>Strategic Financial & Taxation Consulting.</h1>
+            <h2>Led by Akshay Shah</h2>
+            <p>We provide reliable, accurate, and timely financial solutions tailored to safeguard your business compliance and optimize your tax strategies.</p>
+            <a href="#services" class="btn">Explore Practice Areas <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-wrapper">
+            <div class="about-text reveal">
+                <span class="section-subtitle">About Our Practice</span>
+                <h2 class="section-title">Dedicated to Your Financial Integrity.</h2>
+                <p>Navigating the complexities of Indian taxation and corporate compliance requires precision. Under the leadership of Akshay Shah, our firm is committed to delivering seamless financial management, allowing you to focus on scaling your business operations.</p>
+                <p style="margin-top: 1rem;">We cater to a diverse portfolio of clients, including <strong>Individuals, Partnership Firms, Private Limited Companies, LLPs, and HUFs.</strong></p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-bullseye"></i>
+                        <h4>100% Accuracy</h4>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <h4>Timely Compliance</h4>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>Professional Advisory</h4>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Data Confidentiality</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image reveal">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Professional Accounting Office">
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="services-header reveal">
+            <span class="section-subtitle">Practice Areas</span>
+            <h2 class="section-title">Comprehensive Financial Solutions</h2>
+            <p>From foundational bookkeeping to complex tax structuring, we provide end-to-end services designed to keep your entity legally compliant and financially sound.</p>
+        </div>
+
+        <h3 class="service-category-title reveal"><i class="fas fa-file-invoice-dollar"></i> GST <span>Compliances</span></h3>
+        
+        <div class="services-grid" style="margin-bottom: 3rem;">
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-id-card"></i></div>
+                <h3>GST Registration</h3>
+                <p>Determine eligibility and execute a flawless registration process. We handle the paperwork and ensure swift procurement of your GSTIN.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Threshold assessment</li>
+                    <li><i class="fas fa-check"></i> Mandatory advisory</li>
+                    <li><i class="fas fa-check"></i> Multi-state limits</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20the%20GST%20Registration%20service." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>GST Return Filing</h3>
+                <p>Strict, timely GST return filing to avoid penalties. We meticulously reconcile data to ensure you claim exact Input Tax Credit (ITC).</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> GSTR-1, GSTR-3B & 9</li>
+                    <li><i class="fas fa-check"></i> ITC Reconciliation</li>
+                    <li><i class="fas fa-check"></i> E-way bill support</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20the%20GST%20Return%20Filing%20service." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-pen-to-square"></i></div>
+                <h3>Amendments</h3>
+                <p>Update or modify your existing GST registration details seamlessly to maintain perfect compliance with current business operations.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Core field changes</li>
+                    <li><i class="fas fa-check"></i> Non-core updates</li>
+                    <li><i class="fas fa-check"></i> Addition of branches</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20GST%20Amendments%20services." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-ban"></i></div>
+                <h3>GST Cancellation</h3>
+                <p>Officially close and surrender your GST registration with complete compliance and step-by-step professional guidance.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Cancellation application</li>
+                    <li><i class="fas fa-check"></i> Final return (GSTR-10)</li>
+                    <li><i class="fas fa-check"></i> Notice handling</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20GST%20Cancellation%20services." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <h3 class="service-category-title reveal"><i class="fas fa-hand-holding-dollar"></i> Income Tax <span>Compliances</span></h3>
+        
+        <div class="services-grid" style="margin-bottom: 3rem;">
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-user-plus"></i></div>
+                <h3>IT Registration</h3>
+                <p>Register your entity on the official Income Tax portal to enable seamless e-filing, track returns, and maintain history.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> E-filing setup</li>
+                    <li><i class="fas fa-check"></i> PAN/Aadhaar link</li>
+                    <li><i class="fas fa-check"></i> DSC registration</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20Income%20Tax%20Registration%20services." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-file-signature"></i></div>
+                <h3>ITR Filing</h3>
+                <p>Comprehensive tax planning and ITR preparation. We analyze income streams to maximize legal deductions and savings.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> ITR-1 through ITR-7</li>
+                    <li><i class="fas fa-check"></i> Capital Gains review</li>
+                    <li><i class="fas fa-check"></i> Business Income</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20the%20ITR%20Filing%20service." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-money-bill-trend-up"></i></div>
+                <h3>Advance Tax</h3>
+                <p>Accurately estimate and remit your Advance Tax installments throughout the financial year to avoid heavy interest penalties.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Liability computation</li>
+                    <li><i class="fas fa-check"></i> Quarterly tracking</li>
+                    <li><i class="fas fa-check"></i> Challan generation</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20Advance%20Tax%20services." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-percent"></i></div>
+                <h3>TDS Advisory</h3>
+                <p>End-to-end management of Tax Deducted at Source (TDS) provisions, ensuring correct deduction and timely return filings.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> TDS Returns (24Q, 26Q)</li>
+                    <li><i class="fas fa-check"></i> Issuance of Form 16/16A</li>
+                    <li><i class="fas fa-check"></i> Lower deduction certs</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20TDS%20Advisory%20&%20Compliances%20services." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <h3 class="service-category-title reveal"><i class="fas fa-file-contract"></i> Other <span>Compliances</span></h3>
+
+        <div class="services-grid" style="margin-bottom: 3rem;">
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-id-card"></i></div>
+                <h3>PAN Application</h3>
+                <p>Apply for a new Permanent Account Number (PAN) for individuals or business entities seamlessly and securely.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Form 49A/49AA filing</li>
+                    <li><i class="fas fa-check"></i> Document verification</li>
+                    <li><i class="fas fa-check"></i> Status tracking</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20PAN%20Application%20services." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-id-card-clip"></i></div>
+                <h3>PAN Correction</h3>
+                <p>Correct or update existing details on your PAN card accurately to match your current official records and documents.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Name & DOB updates</li>
+                    <li><i class="fas fa-check"></i> Address changes</li>
+                    <li><i class="fas fa-check"></i> Card reprinting</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20PAN%20Correction%20services." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-building-columns"></i></div>
+                <h3>TAN Application</h3>
+                <p>Obtain a Tax Deduction and Collection Account Number (TAN), mandatory for anyone required to deduct tax at source.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Form 49B processing</li>
+                    <li><i class="fas fa-check"></i> Swift TAN allotment</li>
+                    <li><i class="fas fa-check"></i> Compliance advisory</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20TAN%20Application%20services." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-certificate"></i></div>
+                <h3>MSME Registration</h3>
+                <p>Formalize your enterprise with Udyam Registration to unlock crucial government subsidies and delayed payment protection.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Udyam portal filing</li>
+                    <li><i class="fas fa-check"></i> Sector classification</li>
+                    <li><i class="fas fa-check"></i> Investment criteria</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20the%20MSME%20Registration%20service." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <h3 class="service-category-title reveal"><i class="fas fa-calculator"></i> Accounting</h3>
+
+        <div >
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-book"></i></div>
+                <h3>Accounting & Bookkeeping</h3>
+                <p>Transform raw financial data into clear insights. We maintain transparent, systematic, and error-free books of accounts year-round, preparing your business for audits or forecasting.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Daily ledger maintenance</li>
+                    <li><i class="fas fa-check"></i> Profit & Loss / Balance Sheet</li>
+                    <li><i class="fas fa-check"></i> Bank reconciliation tracking</li>
+                </ul>
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20want%20to%20opt%20for%20the%20Accounting%20&%20Bookkeeping%20service." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>  WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-header reveal">
+            <span class="section-subtitle">Let's Connect</span>
+            <h2 class="section-title">Ready to Streamline Your Finances?</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Reach out today to discuss how we can secure your financial compliance and optimize your tax strategy.</p>
+        </div>
+
+        <div class="contact-grid reveal">
+            <div class="contact-card">
+                <h3>A K Shah Consultancy</h3>
+                <p style="color: var(--text-main);">Led by Akshay Shah</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item phone-primary">
+                        <i class="fas fa-phone-alt"></i> +91 9429202337
+                        <i class="fas fa-phone-alt"></i> +91 9428760337
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i> axayshah1@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i> axayshah1@outlook.in
+                    </div>
+                </div>
+
+                <a href="https://wa.me/919428760337?text=Hello%20Akshay,%20I%20would%20like%20to%20schedule%20a%20consultation." target="_blank" class="btn" style="width: 100%; justify-content: center; background-color: var(--whatsapp); border-color: var(--whatsapp); text-transform: uppercase; font-size: 0.95rem;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Start a Conversation
+                </a>
+            </div>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d218.06310355570784!2d72.54921810462191!3d23.074046935645953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8368d9ced04b%3A0x95fb191f02a45011!2sSarvodaya%20Society!5e1!3m2!1sen!2sin!4v1781240323568!5m2!1sen!2sin"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo-title" style="margin-bottom: 5px;">A K Shah<span> Consultancy</span></div>
+        <div class="logo-subtext" style="color: var(--text-main); margin-bottom: 20px;">AKSHAY SHAH</div>
+        
+        <p>© 2026 A K Shah Consultancy. All Rights Reserved.</p>
+        <p style="margin-top: 0.5rem;">Designed for Accuracy, Timeliness, and Professionalism.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if(navLinks.classList.contains('active')){
+                menuToggle.classList.remove('fa-bars');
+                menuToggle.classList.add('fa-times');
+            } else {
+                menuToggle.classList.remove('fa-times');
+                menuToggle.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('fa-times');
+                menuToggle.classList.add('fa-bars');
+            });
+        });
+
+        // REVISED Scroll Reveal Animation - Triggers constantly on up/down scrolls
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                
+                // Adjust this value to trigger earlier/later
+                var elementVisible = 50; 
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    // This forces the animation to re-trigger when scrolling back up
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on load
+    </script>
+</body>
+</html>
