@@ -338,7 +338,7 @@
             font-size: 1.1rem;
         }
 
-        /* Services Grid (Strictly 4 in a row) */
+        /* Services Grid */
         .services-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -349,11 +349,10 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 Columns */
-            gap: 1.2rem; /* Tighter gap to ensure they fit nicely */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
         }
 
-        /* Special centering for the Accounting section */
         .accounting-grid {
             display: flex;
             justify-content: center;
@@ -366,7 +365,7 @@
 
         .service-card {
             background-color: var(--bg-card);
-            padding: 2rem 1.2rem; /* Optimal padding for 4 items in a row */
+            padding: 2rem 1.2rem;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             transition: all 0.4s ease;
@@ -420,7 +419,7 @@
         }
 
         .service-card h3 {
-            font-size: 1.25rem; /* Perfect font size for 4-columns */
+            font-size: 1.25rem;
             margin-bottom: 0.8rem;
             line-height: 1.3;
         }
@@ -549,9 +548,7 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 1100px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr); /* Only switches to 2 rows on smaller screens/tablets */
-            }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
             .accounting-grid .service-card { max-width: none; }
         }
 
@@ -607,10 +604,7 @@
                 text-align: center;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr; /* Switches to 1 card per row on mobile phones */
-            }
-
+            .services-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .contact-card { padding: 2rem 1.5rem; align-items: center; text-align: center; }
             .contact-item { justify-content: center; font-size: 1rem; }
@@ -623,7 +617,6 @@
     <div class="top-bar">
         <div class="top-bar-info">
             <span><i class="fas fa-map-marker-alt"></i> Serving Individuals, Firms, Companies, LLPs, HUFs, etc</span>
-            
         </div>
         <div class="top-bar-social">
             <span style="color: var(--text-heading); font-weight: 600;">Professional Accounting & Taxation</span>
@@ -640,8 +633,8 @@
             <i class="fas fa-bars menu-toggle" id="mobile-menu"></i>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About </a></li>
-                <li><a href="#services">Services </a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -913,6 +906,9 @@
                     <div class="contact-item phone-primary">
                         <i class="fas fa-phone-alt"></i> +91 9429202337
                     </div>
+                    <div class="contact-item phone-primary">
+                        <i class="fas fa-phone-alt"></i> +91 9428760337
+                    </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i> axayshah1@gmail.com
                     </div>
@@ -927,7 +923,7 @@
             </div>
 
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d218.06310355570784!2d72.54921810462191!3d23.074046935645953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8368d9ced04b%3A0x95fb191f02a45011!2sSarvodaya%20Society!5e1!3m2!1sen!2sin!4v1781240323568!5m2!1sen!2sin"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://maps.google.com/maps?q=Sarvodaya+Society,+Ghatlodiya,+Ahmedabad,+Gujarat&t=k&z=17&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
